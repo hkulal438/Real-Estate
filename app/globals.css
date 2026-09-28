@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Luxury warm neutral palette */
+    --background: 40 25% 96%;
+    --foreground: 30 8% 12%;
+    --card: 40 20% 97%;
+    --card-foreground: 30 8% 12%;
+    --popover: 40 20% 97%;
+    --popover-foreground: 30 8% 12%;
+    --primary: 30 8% 14%;
+    --primary-foreground: 40 25% 96%;
+    --secondary: 38 15% 88%;
+    --secondary-foreground: 30 8% 14%;
+    --muted: 38 12% 84%;
+    --muted-foreground: 30 6% 38%;
+    --accent: 38 42% 58%;
+    --accent-foreground: 30 8% 14%;
+    --destructive: 0 60% 45%;
+    --destructive-foreground: 40 25% 96%;
+    --border: 38 14% 80%;
+    --input: 38 14% 80%;
+    --ring: 38 42% 58%;
+    --radius: 0.25rem;
+
+    /* Custom luxury tokens */
+    --bone: 40 25% 96%;
+    --taupe: 35 12% 72%;
+    --charcoal: 30 8% 14%;
+    --gold: 38 45% 52%;
+    --gold-light: 40 50% 68%;
+    --gold-dark: 35 40% 42%;
+  }
+
+  .dark {
+    --background: 30 10% 7%;
+    --foreground: 40 25% 94%;
+    --card: 30 10% 9%;
+    --card-foreground: 40 25% 94%;
+    --popover: 30 10% 9%;
+    --popover-foreground: 40 25% 94%;
+    --primary: 40 25% 94%;
+    --primary-foreground: 30 8% 10%;
+    --secondary: 30 8% 16%;
+    --secondary-foreground: 40 25% 94%;
+    --muted: 30 8% 16%;
+    --muted-foreground: 38 10% 58%;
+    --accent: 38 42% 52%;
+    --accent-foreground: 40 25% 94%;
+    --destructive: 0 50% 40%;
+    --destructive-foreground: 40 25% 96%;
+    --border: 30 8% 20%;
+    --input: 30 8% 20%;
+    --ring: 38 42% 52%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    @apply bg-background text-foreground;
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-cormorant), Georgia, 'Times New Roman', serif;
+  }
+  .font-body {
+    font-family: var(--font-jost), system-ui, -apple-system, sans-serif;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .gold-line {
+    background: linear-gradient(90deg, transparent, hsl(var(--gold)), transparent);
+    }
+  .hairline {
+    border-color: hsl(var(--gold) / 0.3);
+  }
+  .clip-reveal {
+    clip-path: inset(0 0 100% 0);
+  }
+  .clip-revealed {
+    clip-path: inset(0 0 0% 0);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--gold) / 0.4);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--gold) / 0.6);
+}
+
+/* Selection */
+::selection {
+  background: hsl(var(--gold) / 0.25);
+  color: hsl(var(--foreground));
+}
+
+/* Smooth font rendering for serif */
+.font-display {
+  letter-spacing: -0.01em;
+  font-feature-settings: "liga" 1, "kern" 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
